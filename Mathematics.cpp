@@ -80,3 +80,32 @@ int factoPrimeExpo (int n, int p) // n! and prime
     return res; // Returns exponent of p
 }
 // END OF Prime Exponent for an factorial integer n
+
+/* GCD */
+
+int gcd (int a, int b)
+{
+    while (b) b ^= a ^= b ^= a %= b;
+    return a;
+}
+// END OF GCD *********************
+
+/* LCM */
+
+int lcm (int a, int b)
+{
+    return a*b / gcd(a, b);
+}
+// END OF LCM *********************
+
+// ******** Extended GCD for solving aX + bY = D, where a, b given
+int x, y, d;
+void extendedGCD (int a, int b)
+{
+    if (b == 0) {x = 1, y = 0, d = a; return;}
+    extendedGCD(b, a%b);
+
+    int x1 = y, y1 = x - (a/b)*y;
+    x = x1, y = y1;
+}
+// ************ END OF EXTENDED GCD ********************
