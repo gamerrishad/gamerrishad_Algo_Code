@@ -15,6 +15,11 @@ struct point
     }
 };
 
+struct line
+{
+    double a, b, c; // a*x + b*y + c = 0
+};
+
 struct vec
 {
     double x, y;
@@ -49,7 +54,47 @@ vec toVec (point a, point b)
 {
     return vec(b.x-a.x, b.y-a.y);
 }
-// Pre Code For Geometry
+
+// Returns True if lines are parallel
+bool areParallel (line l1, line l2)
+{
+    return (fabs(l1.a - l2.a) < EPS) && (fabs(l1.b-l2.b) < EPS);
+}
+
+// Returns True if Lines are Same
+bool areSame (line l1, line l2)
+{
+    return areParallel(l1, l2) && (fabs(l1.c-l2.c) < EPS);
+}
+
+
+
+// Returns true and Saves in point p if lines intersect
+bool areIntersect (line l1, line l2, point &p)
+{
+    if (areParallel(l1, l2)) return false;
+    p.x = (l2.b * l1.c - l1.b * l2.c) / (l2.a * l1.b - l1.a * l2.b);
+    if (fabs(l1.b) > EPS) p.y = -(l1.a * p.x + l1.c);
+    else                  p.y = -(l2.a * p.x + l2.c);
+    return true;
+}
+
+// Makes line l1 with two point p1 and p2
+void pointsToLine(point p1, point p2, line &l)
+{
+    if (p1.x == p2.x)   // vertical line is handled nicely here
+    {
+        l.a = 1.0;
+        l.b = 0.0;
+        l.c = -p1.x;
+    }
+    else
+    {
+        l.a = -(double)(p1.y - p2.y) / (p1.x - p2.x);
+        l.b = 1.0;
+        l.c = -(double)(l.a * p1.x) - p1.y;
+    }
+}
 
 
 // Returns Distance from point p to Segment (a, b). c is for storing coordinate on segment and c can be anywhere on "ab" line
