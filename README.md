@@ -17,7 +17,7 @@
 3. KMP String Search
 
 # Geometry_Contains
-  --> Points and Lines
+  Points and Lines
       1. Dot Multiplication of two vector
       2. Square of a vector
       3. Distance of two coordinate
