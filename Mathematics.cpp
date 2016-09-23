@@ -109,3 +109,32 @@ void extendedGCD (int a, int b)
     x = x1, y = y1;
 }
 // ************ END OF EXTENDED GCD ********************
+
+// Sum Of Divisors of a number N
+ll sumofdiv (int n)
+{
+    int lmt = sqrt(n) + 1;
+    ll ans = 1, p, s;
+    for (int i=0 ; primes[i]<=lmt ; i++)
+    {
+        if (n%primes[i] == 0)
+        {
+            p = primes[i];
+            while (n%primes[i] == 0)
+            {
+                n /= primes[i];
+                p *= primes[i];
+            }
+            s = (p-1) / (primes[i] - 1);
+            ans *= s;
+        }
+    }
+    if (n > 1)
+    {
+        p = n * n;
+        s = (p-1) / (n-1);
+        ans *= s;
+    }
+    return ans;
+}
+/// ********************** END OF SUM OF DIVISORS *******************
