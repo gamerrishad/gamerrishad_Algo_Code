@@ -1,15 +1,16 @@
 # gamerrishad_Algo_Code
 
 # Mathematics_Contains
-1. Big Mod (Modding x^y from end)
-2. Big Mod (Modding x from first)
+1. BigMod (Modding x^y from end)
+2. BigMod (Modding x from first)
 3. Moduler Multiplicative Inverse (or Fermat's Law)
-4. Sieve of Eratosthenes
-5. Prime Factorization
-6. Prime Exponent for a factorial n!
-7. GCD
-8. LCM
-9. Extended GCD
+4. nCr % M Calculating Function
+5. Sieve of Eratosthenes
+6. Prime Factorization
+7. Prime Exponent for a factorial n!
+8. GCD
+9. LCM
+10. Extended GCD
 
 # Data_Structures_Contains
 1. Inversion with Merge Sort
@@ -17,7 +18,7 @@
 3. KMP String Search
 
 # Geometry_Contains
-  Points and Lines
+  0. Points and Lines
   1. Dot Multiplication of two vector
   2. Square of a vector
   3. Distance of two coordinate
