@@ -1,5 +1,5 @@
 /* BIG MOD */
-int bigmod (int base, int expo, int mod)
+int BigMod (int base, int expo, int mod)
 {
     int res = 1;
     while (expo)
@@ -23,9 +23,20 @@ int firstMOD (int base, int expo, int mod) // 2^10 = 1024 ans is 10 if mod 100
 /* Moduler Multiplicative Inverse */ //***************************************
 int modInverse (int a, int mod)
 {
-    return bigmod(a, mod-2, mod);
+    return BigMod(a, mod-2, mod);
 }
 // END OF Moduler Multiplicative Inverse
+
+/* nCr%M Calculating Function */
+ll nCr (int n, int r, vector <ll>& fact)
+{
+    if (r > n) return 0LL;
+    ll ans = fact[n];
+    ans = (ans * BigMod(fact[r], mod-2, mod)) % mod;
+    ans = (ans * BigMod(fact[n-r], mod-2, mod)) % mod;
+    return ans;
+}
+///////////////////////// END OF nCr%M **************************
 
 // ********** Generate Primes (Sieve) *************************//
 #define MX 10000010
