@@ -43,7 +43,6 @@ ll nCr (int n, int r, vector <ll>& fact)
 vector<int>primes;
 bool flag[MX];
 int sz;
-
 void sieve ()
 {
     int lmt = (sqrt(MX));
@@ -93,7 +92,6 @@ int factoPrimeExpo (int n, int p) // n! and prime
 // END OF Prime Exponent for an factorial integer n
 
 /* GCD */
-
 int gcd (int a, int b)
 {
     while (b) b ^= a ^= b ^= a %= b;
@@ -149,3 +147,29 @@ ll sumofdiv (int n)
     return ans;
 }
 /// ********************** END OF SUM OF DIVISORS *******************
+
+// Number of Solutions to a Linear Algebraic Equation ******************
+// p1 + p2 + p3 + ... + k = n the function returns number of solution of this equation including upper and lower bound for each p
+scanf("%d %d", &k, &n);
+for (int i=0 ; i<k ; i++)
+     scanf("%d %d", &l[i], &u[i]), u[i]++; // Lower and Upper Together is upper-lower+1, this is why u[i]++
+
+int lmt = (1 << k);
+ll ans = 0;
+for (int mask = 0 ; mask < lmt ; mask++)
+{
+     int del = n, bits = 0;
+     for (int i=0 ; i<k ; i++)
+     {
+          if (mask&(1<<i)) del -= u[i], bits++;
+          else del -= l[i];
+     }
+     if (del >= 0)
+     {
+          if (bits&1) ans -= nCr(del+k-1, k-1);
+          else ans += nCr(del+k-1, k-1);
+          ans %= MOD, ans += MOD, ans %= MOD;
+     }
+}
+return ans;
+// *** END OF Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound ***************
