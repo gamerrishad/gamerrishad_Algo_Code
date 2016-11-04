@@ -2,7 +2,7 @@
 
 # Mathematics_Contains
 1. BigMod (Modding x^y from end)
-2. BigMod (Modding x from first)
+2. BigMod (Modding x from front)
 3. Moduler Multiplicative Inverse (or Fermat's Law)
 4. nCr % M Calculating Function
 5. Sieve of Eratosthenes
@@ -11,6 +11,8 @@
 8. GCD
 9. LCM
 10. Extended GCD
+11. Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound
+12. Euler Phi Function
 
 # Data_Structures_Contains
 1. Inversion with Merge Sort
