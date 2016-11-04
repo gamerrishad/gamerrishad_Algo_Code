@@ -180,7 +180,6 @@ return ans;
 // to any number).
 // N        1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22
 // Phi(N)   1   1   2   2   4   2   6   4   6   4  10   4  12   6   8   8  16   6  18   8  12  10
-    
 const int MAX = 1000001;
 int phi[MAX];
 void euler_phi()
@@ -198,5 +197,19 @@ void euler_phi()
             }
         }
     }
+}
+
+// Another approach with Complexity O(sqrt(n))
+int phi(int n) {
+    int result = n;
+    for(int i = 2; i * i <= n; ++i)
+        if(n % i == 0) {
+            while(n % i == 0)
+                n /= i;
+            result -= result / i;
+        }
+    if(n > 1)
+        result -= result / n;
+    return result;
 }
 // ****** END of Euler Phi Function // ************
