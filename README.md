@@ -11,8 +11,9 @@
 8. GCD
 9. LCM
 10. Extended GCD
-11. Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound
-12. Euler Phi Function
+11. Sum Of Divisors of a number N
+12. Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound
+13. Euler Phi Function
 
 # Data_Structures_Contains
 1. Inversion with Merge Sort
