@@ -175,9 +175,14 @@ return ans;
 // *** END OF Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound ***************
 
 // **** Euler Phi Function ****************** //
+// Euler's totient function, also known as phi-function ϕ(n)ϕ(n), is the number of integers between 1 and n, inclusive, 
+// which are coprime to n. Two numbers are coprime if their greatest common divisor equals 1 (1 is considered to be coprime 
+// to any number).
+// N        1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22
+// Phi(N)   1   1   2   2   4   2   6   4   6   4  10   4  12   6   8   8  16   6  18   8  12  10
+    
 const int MAX = 1000001;
 int phi[MAX];
-
 void euler_phi()
 {
     phi[1] = 1;
