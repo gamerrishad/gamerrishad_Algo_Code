@@ -1,4 +1,4 @@
-/* BIG MOD */
+/******* 1. BigMod (Modding x^y from end) ******/
 int BigMod (int base, int expo, int mod)
 {
     int res = 1;
@@ -10,7 +10,8 @@ int BigMod (int base, int expo, int mod)
     }
     return res;
 }
-
+// ___ END OF BigMod (Modding x^y from end) ____
+/*********************** 2. BigMod (Modding x from front) ********************/
 int firstMOD (int base, int expo, int mod) // 2^10 = 1024 ans is 10 if mod 100 
 {
     double x = (expo * log10(base));
@@ -18,16 +19,14 @@ int firstMOD (int base, int expo, int mod) // 2^10 = 1024 ans is 10 if mod 100
 
     return pow(10, x) * mod;
 }
-// END OF BIG MOD ************************************************************
-
-/* Moduler Multiplicative Inverse */ //***************************************
+// _______________ END OF BigMod (Modding x from front) ______________________
+/** 3. Moduler Multiplicative Inverse (or Fermat's Law) ***/
 int modInverse (int a, int mod)
 {
     return BigMod(a, mod-2, mod);
 }
-// END OF Moduler Multiplicative Inverse
-
-/* nCr%M Calculating Function */
+// _END OF Moduler Multiplicative Inverse_
+/****** 4. nCr % M Calculating Function **************/
 ll nCr (int n, int r, vector <ll>& fact)
 {
     if (r > n) return 0LL;
@@ -36,9 +35,8 @@ ll nCr (int n, int r, vector <ll>& fact)
     ans = (ans * BigMod(fact[n-r], mod-2, mod)) % mod;
     return ans;
 }
-///////////////////////// END OF nCr%M **************************
-
-// ********** Generate Primes (Sieve) *************************//
+//_____ END OF nCr % M Calculating Function __________
+/******* 4. Sieve of Eratosthenes or Generate Primes *******/
 #define MX 10000010
 vector<int>primes;
 bool flag[MX];
@@ -58,9 +56,8 @@ void sieve ()
 
     sz = primes.size();
 }
-// END OF SIEVE // ********************************* //
-
-// ************ Prime Factorization ***********
+// ______ END OF Sieve of Eratosthenes ______
+/***************** 6. Prime Factorization **********************/
 // SZ is primes.size()
 int expos[10000001], div; // Power of i'th Prime saved here
 void primePower (int n)
@@ -75,9 +72,9 @@ void primePower (int n)
         }
     }
 }
-// END OF PRIME FACTORIZATION // ********************************************* //
+// ___________ END OF PRIME FACTORIZATION _____________________
 
-/// Prime Exponent for a factorial n!
+/******** 7.Prime Exponent for a factorial n! ********/
 int factoPrimeExpo (int n, int p) // n! and prime
 {
     int res = 0;
@@ -89,25 +86,24 @@ int factoPrimeExpo (int n, int p) // n! and prime
     }while (n);
     return res; // Returns exponent of p
 }
-// END OF Prime Exponent for an factorial integer n
+// ____ END OF Prime Exponent for an factorial integer n ____
 
-/* GCD */
+/************* 8. GCD *************/
 int gcd (int a, int b)
 {
     while (b) b ^= a ^= b ^= a %= b;
     return a;
 }
-// END OF GCD *********************
+// _________ END OF GCD ____________
 
-/* LCM */
-
+/******** 9. LCM ************/
 int lcm (int a, int b)
 {
     return a*b / gcd(a, b);
 }
-// END OF LCM *********************
-
-// ******** Extended GCD for solving aX + bY = D, where a, b given
+// _____ END OF LCM ________
+/************ 10. Extended GCD *****************/
+// for solving aX + bY = D, where a, b given
 int x, y, d;
 void extendedGCD (int a, int b)
 {
@@ -117,9 +113,8 @@ void extendedGCD (int a, int b)
     int x1 = y, y1 = x - (a/b)*y;
     x = x1, y = y1;
 }
-// ************ END OF EXTENDED GCD ********************
-
-// Sum Of Divisors of a number N
+// __________ END OF EXTENDED GCD _____________
+/********* 11. Sum Of Divisors of a number N ********/
 ll sumofdiv (int n)
 {
     int lmt = sqrt(n) + 1;
@@ -146,9 +141,9 @@ ll sumofdiv (int n)
     }
     return ans;
 }
-/// ********************** END OF SUM OF DIVISORS *******************
+// ______ END OF SUM OF DIVISORS _________
 
-// Number of Solutions to a Linear Algebraic Equation ******************
+/********************************* 12. Number of Solutions to a Linear Algebraic Equation *************************************/
 // p1 + p2 + p3 + ... + k = n the function returns number of solution of this equation including upper and lower bound for each p
 scanf("%d %d", &k, &n);
 for (int i=0 ; i<k ; i++)
@@ -172,9 +167,9 @@ for (int mask = 0 ; mask < lmt ; mask++)
      }
 }
 return ans;
-// *** END OF Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound ***************
+// _____________ END OF Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound ____________________
 
-// **** Euler Phi Function ****************** //
+/*********************************************** 13. Euler Phi Function ***************************************************/
 // Euler's totient function, also known as phi-function ϕ(n)ϕ(n), is the number of integers between 1 and n, inclusive, 
 // which are coprime to n. Two numbers are coprime if their greatest common divisor equals 1 (1 is considered to be coprime 
 // to any number).
@@ -198,7 +193,6 @@ void euler_phi()
         }
     }
 }
-
 // Another approach with Complexity O(sqrt(n))
 int phi(int n) {
     int result = n;
@@ -212,4 +206,4 @@ int phi(int n) {
         result -= result / n;
     return result;
 }
-// ****** END of Euler Phi Function // ************
+// ______________________________________ END of Euler Phi Function _____________________________________________________
