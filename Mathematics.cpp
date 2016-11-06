@@ -35,6 +35,27 @@ ll nCr (int n, int r, vector <ll>& fact)
     ans = (ans * BigMod(fact[n-r], mod-2, mod)) % mod;
     return ans;
 }
+
+// Another for very big n while r is very small
+// pre calculate inv[]
+// for (int i = 1; i <= MAX_r ; i++)
+    // inv[i] = BigMod(i, mod - 2LL, mod);
+
+ll nCr (ll n, int r)
+{
+    if (r > n) return 0LL;
+    if (n == r || r == 0) return 1LL;
+    if (r > n-r) r = n-r;
+    n %= mod;
+
+    ll ans = 1LL;
+    for (int i = 1; i <= r; i++)
+    {
+        ans = (ans * ((n - (ll)i + 1LL + mod) % mod)) % mod;
+        ans = (ans * inv[i]) % mod;
+    }
+    return ans;
+}
 //_____ END OF nCr % M Calculating Function __________
 /******* 4. Sieve of Eratosthenes or Generate Primes *******/
 #define MX 10000010
