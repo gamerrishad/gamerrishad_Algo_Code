@@ -30,6 +30,13 @@ struct vec
     }
 };
 
+// Returns True if 3 points are collinear
+bool are_collinear (point a, point b, point c)
+{
+    if ((a.x-b.x)*(c.y-b.y)-(a.y-b.y)*(c.x-b.x) == 0) return true;
+    return false;
+}
+
 double dot(vec a, vec b)
 {
     return (a.x*b.x + a.y*b.y);
