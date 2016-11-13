@@ -30,7 +30,7 @@ struct vec
     }
 };
 
-// Returns True if 3 points are collinear
+// Returns True if 3 points are collinear, triangle area is zero returns true
 bool are_collinear (point a, point b, point c)
 {
     if ((a.x-b.x)*(c.y-b.y)-(a.y-b.y)*(c.x-b.x) == 0) return true;
