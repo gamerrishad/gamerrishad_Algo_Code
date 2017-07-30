@@ -66,4 +66,35 @@ int hopcroft_karp() {
     return matching;
 }
 
-// END OF Maximum Matching (Hopcroft) // ********
+/////////////////////// END OF Maximum Matching (Hopcroft) // ********
+
+// ******************* Finding Articulation Point and Bridges ************************** //
+int seen[1001];
+int parent[1001], low[1001], dis[1001];
+
+void bridge (vector<int>Adj[], int u)
+{
+    static int tm=0;
+    seen[u] = 1;
+    low[u] = dis[u] = ++tm;
+
+    for (int i=0 ; i<Adj[u].size() ; i++)
+    {
+        int v = Adj[u][i];
+        if (!seen[v])
+        {
+            parent[v] = u;
+            bridge(Adj, v);
+            printf("%d %d\n", u, v); // u -> v is a bridge
+            if (low[v] > dis[u]) printf("%d %d\n", v, u); // v -> u is a bridge
+            low[u] = min(low[u], low[v]);
+        }
+        else if (seen[v] == 1 && v != parent[u])
+        {
+            printf("%d %d\n", u, v); // u -> v is a bridge
+            low[u] = min(low[u], dis[v]);
+        }
+    }
+    seen[u] = 2;
+}
+////////////////////// END OF Finding Articulation Point and Bridges //////////////////////////////
