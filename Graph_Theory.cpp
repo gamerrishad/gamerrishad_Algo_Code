@@ -85,13 +85,13 @@ void bridge (vector<int>Adj[], int u)
         {
             parent[v] = u;
             bridge(Adj, v);
-            printf("%d %d\n", u, v); // u -> v is a bridge
+            printf("%d %d\n", u, v);
             if (low[v] > dis[u]) printf("%d %d\n", v, u); // v -> u is a bridge
             low[u] = min(low[u], low[v]);
         }
         else if (seen[v] == 1 && v != parent[u])
         {
-            printf("%d %d\n", u, v); // u -> v is a bridge
+            printf("%d %d\n", u, v);
             low[u] = min(low[u], dis[v]);
         }
     }
