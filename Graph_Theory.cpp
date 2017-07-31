@@ -69,32 +69,34 @@ int hopcroft_karp() {
 /////////////////////// END OF Maximum Matching (Hopcroft) // ********
 
 // ******************* Finding Articulation Point and Bridges ************************** //
-int seen[1001];
-int parent[1001], low[1001], dis[1001];
-
-void bridge (vector<int>Adj[], int u)
+vector<adj>Adj[10001];
+int seen[10001], parent[10001], low[10001], dis[10001];
+int timer;
+void dfs (int v, int p = -1)
 {
-    static int tm=0;
-    seen[u] = 1;
-    low[u] = dis[u] = ++tm;
-
-    for (int i=0 ; i<Adj[u].size() ; i++)
+    seen[v] = true;
+    dis[v] = low[v] = timer++;
+    for (int i=0 ; i<Adj[v].size() ; i++)
     {
-        int v = Adj[u][i];
-        if (!seen[v])
+        int to = Adj[v][i];
+        if (to == p)continue;
+        if (seen[to]) low[v] = min (low[v], dis[to]);
+        else
         {
-            parent[v] = u;
-            bridge(Adj, v);
-            printf("%d %d\n", u, v);
-            if (low[v] > dis[u]) printf("%d %d\n", v, u); // v -> u is a bridge
-            low[u] = min(low[u], low[v]);
-        }
-        else if (seen[v] == 1 && v != parent[u])
-        {
-            printf("%d %d\n", u, v);
-            low[u] = min(low[u], dis[v]);
+            dfs (to, v);
+            low[v] = min (low[v], low[to]);
+            if (low[to] > dis[v])
+                // THIS IS BRIDGE!!!!!!!
         }
     }
-    seen[u] = 2;
+}
+
+void bridge()
+{
+    timer = 0;
+    for (int i = 0; i < n; ++i) seen[i] = false;
+    for (int i = 0; i < n; ++i)
+        if (!seen[i])
+            dfs (i);
 }
 ////////////////////// END OF Finding Articulation Point and Bridges //////////////////////////////
