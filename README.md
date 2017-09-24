@@ -14,7 +14,6 @@
 11. Sum Of Divisors of a number N
 12. Number of Solutions to a Linear Algebraic Equation with Upper and Lower Bound
 13. Euler Phi Function
-14. Least Number of Perfect Squares that Sums to n
 
 # Data_Structures_Contains
 1. Inversion with Merge Sort
